@@ -1,0 +1,31 @@
+Package: rwnnet
+Title: An R/C++ Implementation of Randomized Weights Neural Networks
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: rwnnet implements randomized feed-forward neural network where the
+        hidden layers are random initialized and fixed during training. The
+        network is fitted in a single-pass by training a regularized least 
+        squares read-out layer - Tikhonov regularization through an efficient
+        SVD-based algorithm. As an additional regularization mechanism gaussian
+        noise is added both to the inputs and output(s) of the network.
+        The key components of are written in C++, using Rcpp, and binded to R
+        for maximum performance and ease-of-use. Shallow and deep network can
+        be trained using the Extreme Learning Machine and the Random Vector
+        Functional Link frameworks.  Supports regression, multi-output 
+        regression and classification. Depending on the algorithm chosen it
+        allows to fit an implicit ensemble model.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+LinkingTo: 
+    Rcpp,
+    RcppArmadillo
+Imports: 
+    Rcpp
