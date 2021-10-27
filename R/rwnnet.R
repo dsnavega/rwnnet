@@ -247,6 +247,7 @@ rwnnet <- function(x, y, size, algorithm, skip = TRUE, flat = TRUE, eta = 1) {
       group_names = group_names,
       n_cases = nrow(x),
       n_input = ncol(x),
+      n_output = ncol(y),
       input_names = colnames(x),
       time = difftime(Sys.time(), start, units = "secs")[[1]]
     ),
@@ -360,6 +361,10 @@ predict.rwnnet <- function(object, x, ...) {
 
   }
 
+  # Return regression as numeric vector if output size equals 1
+  if (object$task == "regression" & object$n_output == 1)
+    predicted <- as.numeric(predicted)
+
   return(predicted)
 
 }
@@ -373,6 +378,6 @@ print.rwnnet <- function(x, ...) {
   cat("\n - Randomized Neural Network - \n")
   cat("\n Task:", x$task)
   cat("\n Algorithm:", x$algorithm)
-  cat("\n Size:", x$size)
+  cat("\n Width:", x$size)
   cat("\n Depth:", length(x$size))
 }
