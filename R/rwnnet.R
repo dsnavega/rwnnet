@@ -22,7 +22,7 @@
 # Calçada Martim de Freitas, 3000-456, Coimbra
 # Portugal
 
-#' rwnnet: An R/C++ implementation of randomized weights neural networks.
+#' rwnnet: An R/C++ Implementation of Random Weights Neural Networks.
 #'
 #' rwnnet implements randomized feed-forward neural network where the hidden
 #' layers are random initialized and fixed during training. The network is
@@ -30,7 +30,7 @@
 #' layer - Tikhonov regularization through an efficient SVD-based algorithm.
 #' As an additional regularization mechanism gaussian noise is added both to
 #' the inputs and output(s) of the network.
-#' The key components of are written in C++, using Rcpp, and binded to R for
+#' The key components are written in C++, using Rcpp, and binded to R for
 #' maximum performance and ease-of-use. Shallow and deep network can be
 #' trained using the Extreme Learning Machine and the Random Vector Functional
 #' Link frameworks.  Supports regression, multi-output regression and
@@ -56,6 +56,11 @@
 #' to the output layer.
 #' @param eta a numeric value. Controls the gaussian noise regularization.
 #' See Details
+#'
+#' @details
+#' TODO
+#' @references
+#' TODO
 #'
 rwnnet <- function(x, y, size, algorithm, skip = TRUE, flat = TRUE, eta = 1) {
 
@@ -165,23 +170,12 @@ rwnnet <- function(x, y, size, algorithm, skip = TRUE, flat = TRUE, eta = 1) {
   # Training ----
 
   # Size Heuristic
-  if (algorithm == "slrwnnet") {
-
-    if (is.null(size)) {
-      k <- floor(log2(nrow(x)))
-      size <- floor((8 * sqrt((2 ^ k) / k)))
-      size <- 2 ^ ceiling(log2(size))
-    }
-
-  } else {
-
-    if (is.null(size)) {
-      k <- floor(log2(nrow(x)))
-      ksize <- floor((8 * sqrt((2 ^ k) / k)))
-      dsize <- c(2 * ksize, ksize, ksize / 2)
-      size <- 2 ^ floor(log2(dsize))
-    }
-
+  if (is.null(size)) {
+    k <- log2(nrow(x))
+    size <- (8 * sqrt((2 ^ k) / k))
+    size <- 2 ^ floor(log2(size))
+    k <- 2 ^ floor(log2(k))
+    size <- rep(size , times = k)
   }
 
   # Training Algorithms
@@ -189,7 +183,7 @@ rwnnet <- function(x, y, size, algorithm, skip = TRUE, flat = TRUE, eta = 1) {
 
     slrwnnet = {
       .fit_slrwnnet(
-        x = x, y = y, size = size[1], skip = skip, eta = eta
+        x = x, y = y, size = max(size), skip = skip, eta = eta
       )
     },
 
@@ -262,7 +256,7 @@ rwnnet <- function(x, y, size, algorithm, skip = TRUE, flat = TRUE, eta = 1) {
 
 #' Predict Method for rwnnet
 #'
-#' @param object a fitted object of class inherithng from "rwnnet".
+#' @param object a fitted object of class inheriting from "rwnnet".
 #' @param x  data.frame or tibble in which to look for inputs with which to
 #' predict. If omitted, the leave-one-out cross-validation results are used.
 #' @param ... ...

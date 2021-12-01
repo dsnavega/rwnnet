@@ -42,13 +42,8 @@ Rcpp::List fit_aerwnnet(
 
     if (i == 0) {
 
-      if (size[i] > x.n_cols) {
-        init = "nguyen-widrow";
-      } else {
-        init = "orthonormal";
-      }
 
-      encoder = fit_encoder(x, size[i], init, eta);
+      encoder = fit_encoder(x, size[i], eta);
       lambda[i] = encoder[6];
       H = transform_encoder(encoder, x);
 
@@ -60,14 +55,7 @@ Rcpp::List fit_aerwnnet(
       // Enforce skip connection from input to hidden layers, encoding process
       // always have access to raw input.
       H.insert_cols(0, z);
-
-      if (size[i] > H.n_cols) {
-        init = "nguyen-widrow";
-      } else {
-        init = "orthonormal";
-      }
-
-      encoder = fit_encoder(H, size[i], init, eta);
+      encoder = fit_encoder(H, size[i], eta);
       lambda[i] = encoder[6];
       H = transform_encoder(encoder, H);
 

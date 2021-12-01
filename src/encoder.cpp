@@ -36,12 +36,12 @@ using namespace arma;
 Rcpp::List fit_encoder(
     arma::mat x,
     int size,
-    std::string init = "orthonormal",
     double eta = 1.96
 ) {
 
   // Rectifier
   std::string node = "relu";
+  std::string init = "tapson";
 
   // Declare Variables
   Rcpp::List readout;

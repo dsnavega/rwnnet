@@ -2,7 +2,7 @@
 % Please edit documentation in R/rwnnet.R
 \name{rwnnet}
 \alias{rwnnet}
-\title{rwnnet: An R/C++ implementation of randomized weights neural networks.}
+\title{rwnnet: An R/C++ Implementation of Random Weights Neural Networks.}
 \usage{
 rwnnet(x, y, size, algorithm, skip = TRUE, flat = TRUE, eta = 1)
 }
@@ -36,12 +36,18 @@ fitted in a single-pass by training a regularized least squares read-out
 layer - Tikhonov regularization through an efficient SVD-based algorithm.
 As an additional regularization mechanism gaussian noise is added both to
 the inputs and output(s) of the network.
-The key components of are written in C++, using Rcpp, and binded to R for
+The key components are written in C++, using Rcpp, and binded to R for
 maximum performance and ease-of-use. Shallow and deep network can be
 trained using the Extreme Learning Machine and the Random Vector Functional
 Link frameworks.  Supports regression, multi-output regression and
 classification. Depending on the algorithm chosen it allows to fit an
 implicit ensemble model.
+}
+\details{
+TODO
+}
+\references{
+TODO
 }
 \author{
 David Senhora Navega

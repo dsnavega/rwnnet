@@ -38,8 +38,7 @@ using namespace arma;
 
 Rcpp::List fit_encoder(
         arma::mat x,
-        int size = 32,
-        std::string initialisation = "orthogonal",
+        int size,
         double eta = 1.96
 );
 

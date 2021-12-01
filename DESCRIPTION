@@ -1,12 +1,12 @@
 Package: rwnnet
-Title: An R/C++ Implementation of Randomized Weights Neural Networks
+Title: An R/C++ Implementation of Random Weights Neural Networks
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person(given = c("David", "Senhora"),
+           family = "Navega",
+           role = c("aut", "cre", "cph"),
+           email = "dsnavega@gmail.com",
+           comment = c(ORCID = "0000-0003-4495-3762"))
 Description: rwnnet implements randomized feed-forward neural network where the
         hidden layers are random initialized and fixed during training. The
         network is fitted in a single-pass by training a regularized least 
@@ -21,6 +21,7 @@ Description: rwnnet implements randomized feed-forward neural network where the
         allows to fit an implicit ensemble model.
 License: GPL-3
 Encoding: UTF-8
+Language: en
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

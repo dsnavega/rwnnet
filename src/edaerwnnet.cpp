@@ -72,12 +72,7 @@ Rcpp::List fit_edaerwnnet(
     // Unsupervised Component
     if (i == 0) {
 
-      if (size[i] > x.n_cols) {
-        init = "nguyen-widrow";
-      } else {
-        init = "orthonormal";
-      }
-      encoder = fit_encoder(x, size[i], init, eta);
+      encoder = fit_encoder(x, size[i], eta);
       H = transform_encoder(encoder, x);
       u_lambda[i] = encoder[6];
       U[i] = encoder;
@@ -86,13 +81,7 @@ Rcpp::List fit_edaerwnnet(
 
       H.insert_cols(0, z);
 
-      if (size[i] > x.n_cols) {
-        init = "nguyen-widrow";
-      } else {
-        init = "orthonormal";
-      }
-
-      encoder = fit_encoder(H, size[i], init, eta);
+      encoder = fit_encoder(H, size[i], eta);
       H = transform_encoder(encoder, H);
       u_lambda[i] = encoder[6];
       U[i] = encoder;

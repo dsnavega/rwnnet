@@ -7,7 +7,7 @@
 \method{predict}{rwnnet}(object, x, ...)
 }
 \arguments{
-\item{object}{a fitted object of class inherithng from "rwnnet".}
+\item{object}{a fitted object of class inheriting from "rwnnet".}
 
 \item{x}{data.frame or tibble in which to look for inputs with which to
 predict. If omitted, the leave-one-out cross-validation results are used.}
