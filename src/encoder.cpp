@@ -41,7 +41,7 @@ Rcpp::List fit_encoder(
 
   // Rectifier
   std::string node = "relu";
-  std::string init = "tapson";
+  std::string init = "nguyen-widrow";
 
   // Declare Variables
   Rcpp::List readout;

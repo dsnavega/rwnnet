@@ -1,6 +1,6 @@
 // This file is part of rwnnet
 //
-// Copyright (C) 2021, David Senhora Navega
+// Copyright (C) 2022, David Senhora Navega
 //
 // rwnnet is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

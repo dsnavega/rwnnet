@@ -1,6 +1,6 @@
 // This file is part of rwnnet
 //
-// Copyright (C) 2021, David Senhora Navega
+// Copyright (C) 2022, David Senhora Navega
 //
 // rwnnet is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -157,7 +157,7 @@ arma::mat predict_edaerwnnet(Rcpp::List network, arma::mat x) {
   int n_output = network[10];
 
   arma::mat z, H;
-  arma::cube Y(x.n_rows, n_output,depth);
+  arma::cube Y(x.n_rows, n_output, depth);
 
   // Input Scaling
   z = transform_zscore_scaler(as<List>(network[0])[0], x);
